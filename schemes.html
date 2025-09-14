@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government Agricultural Schemes - Farm Assistant</title>
+    <meta name="description" content="Comprehensive information about Indian Central and State government agricultural schemes for farmers.">
+    <meta name="keywords" content="agricultural schemes, government schemes, PM-Kisan, PMFBY, farming subsidies, Kerala agriculture">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>">
+    <style>
+        .schemes-hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+            color: var(--white);
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+        
+        .schemes-hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .schemes-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .schemes-content {
+            padding: 80px 0;
+            background: var(--white);
+        }
+        
+        .scheme-section {
+            margin-bottom: 4rem;
+        }
+        
+        .scheme-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .scheme-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+        
+        .schemes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .scheme-card {
+            background: var(--white);
+            border: 2px solid var(--background-light);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .scheme-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+        }
+        
+        .scheme-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+        }
+        
+        .scheme-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .scheme-card .scheme-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.2rem;
+        }
+        
+        .scheme-card .allocation {
+            background: var(--accent-color);
+            color: var(--text-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        
+        .scheme-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .scheme-card .features {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .scheme-card .features li {
+            padding: 0.5rem 0;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .scheme-card .features li::before {
+            content: '✓';
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .upcoming-schemes {
+            background: var(--background-light);
+            padding: 80px 0;
+        }
+        
+        .upcoming-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--accent-color);
+            transition: var(--transition);
+        }
+        
+        .upcoming-card:hover {
+            transform: translateX(10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .upcoming-card h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .upcoming-card .allocation {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+            color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-button {
+            background: var(--accent-color);
+            color: var(--text-dark);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .cta-button:hover {
+            background: #ffed4e;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .cta-button.secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+        
+        .cta-button.secondary:hover {
+            background: var(--white);
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .schemes-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .scheme-section h2 {
+                font-size: 2rem;
+            }
+            
+            .schemes-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <i class="fas fa-seedling"></i>
+                <span>Farm Assistant</span>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#about" class="nav-link">About Us</a>
+                <a href="schemes.html" class="nav-link active">Government Schemes</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Schemes Hero Section -->
+    <section class="schemes-hero">
+        <div class="container">
+            <h1>🏛️ Government Agricultural Schemes</h1>
+            <p>Comprehensive information about Central and State government agricultural schemes designed to support and empower farmers across India.</p>
+        </div>
+    </section>
+
+    <!-- Ongoing Central Government Schemes -->
+    <section class="schemes-content">
+        <div class="container">
+            <div class="scheme-section">
+                <h2>Ongoing Central Government Schemes (2023-2025)</h2>
+                <div class="schemes-grid">
+                    <div class="scheme-card">
+                        <h3>
+                            <div class="scheme-icon">
+                                <i class="fas fa-rupee-sign"></i>
+                            </div>
+                            PM-KISAN
+                        </h3>
+                        <div class="allocation">₹6,000 Income Support</div>
+                        <p>Direct income support scheme providing ₹6,000 per year to eligible farmer families in three equal installments.</p>
+                        <ul class="features">
+                            <li>Direct bank transfer to farmer accounts</li>
+                            <li>No middlemen involved</li>
+                            <li>Beneficial for small and marginal farmers</li>
+                            <li>Helps with agricultural input costs</li>
+                        </ul>
+                    </div>
+
+                    <div class="scheme-card">
+                        <h3>
+                            <div class="scheme-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            PMFBY (Pradhan Mantri Fasal Bima Yojana)
+                        </h3>
+                        <div class="allocation">Crop Insurance with Tech Support</div>
+                        <p>Comprehensive crop insurance scheme with drone and technology support for better risk management.</p>
+                        <ul class="features">
+                            <li>Drone-based crop assessment</li>
+                            <li>Technology-driven claim settlement</li>
+                            <li>Affordable premium rates</li>
+                            <li>Coverage for natural calamities</li>
+                        </ul>
+                    </div>
+
+                    <div class="scheme-card">
+                        <h3>
+                            <div class="scheme-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            Digital Agriculture Mission
+                        </h3>
+                        <div class="allocation">AI, Drones & GIS Integration</div>
+                        <p>Modernizing agriculture through artificial intelligence, drone technology, and Geographic Information Systems.</p>
+                        <ul class="features">
+                            <li>AI-powered farming solutions</li>
+                            <li>Drone technology for monitoring</li>
+                            <li>GIS mapping for precision agriculture</li>
+                            <li>Digital infrastructure development</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- State Government Schemes (Kerala) -->
+    <section class="schemes-content" style="background: var(--background-light);">
+        <div class="container">
+            <div class="scheme-section">
+                <h2>State Government Agricultural Schemes (Kerala)</h2>
+                <div class="schemes-grid">
+                    <div class="scheme-card">
+                        <h3>
+                            <div class="scheme-icon">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            Organic Farming Mission
+                        </h3>
+                        <div class="allocation">5,000 ha in 5 years</div>
+                        <p>Expanding organic farming practices across Kerala with comprehensive support and training programs.</p>
+                        <ul class="features">
+                            <li>Organic certification support</li>
+                            <li>Training and capacity building</li>
+                            <li>Market linkage assistance</li>
+                            <li>Premium pricing for organic produce</li>
+                        </ul>
+                    </div>
+
+                    <div class="scheme-card">
+                        <h3>
+                            <div class="scheme-icon">
+                                <i class="fas fa-laptop"></i>
+                            </div>
+                            Smart Krishi Bhavan
+                        </h3>
+                        <div class="allocation">Digital Service Centers</div>
+                        <p>Modern digital agricultural service centers providing technology-driven solutions to farmers.</p>
+                        <ul class="features">
+                            <li>Digital advisory services</li>
+                            <li>Online market platforms</li>
+                            <li>Weather information systems</li>
+                            <li>E-governance services</li>
+                        </ul>
+                    </div>
+
+                    <div class="scheme-card">
+                        <h3>
+                            <div class="scheme-icon">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            Urban/Vertical Farming Subsidy
+                        </h3>
+                        <div class="allocation">75% Subsidy Available</div>
+                        <p>Promoting urban and vertical farming with substantial financial support for rooftop and vertical gardens.</p>
+                        <ul class="features">
+                            <li>75% subsidy on setup costs</li>
+                            <li>Technical guidance and training</li>
+                            <li>Urban agriculture promotion</li>
+                            <li>Space-efficient farming solutions</li>
+                        </ul>
+                    </div>
+
+                    <div class="scheme-card">
+                        <h3>
+                            <div class="scheme-icon">
+                                <i class="fas fa-tree"></i>
+                            </div>
+                            Rubber Subsidy Scheme
+                        </h3>
+                        <div class="allocation">Large Budget Allocation</div>
+                        <p>Comprehensive support for the rubber sector with significant budget allocation for development and modernization.</p>
+                        <ul class="features">
+                            <li>Plantation development support</li>
+                            <li>Processing unit assistance</li>
+                            <li>Market development initiatives</li>
+                            <li>Technology upgradation support</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Schemes -->
+    <section class="upcoming-schemes">
+        <div class="container">
+            <div class="scheme-section">
+                <h2>Upcoming Schemes</h2>
+                
+                <div class="upcoming-card">
+                    <h3>High-Value Horticulture Hub Scheme</h3>
+                    <div class="allocation">Allocation: ₹18.92 Crore</div>
+                    <p><strong>Focus:</strong> Promote fruits, flowers, and medicinal plants to increase production and productivity in the horticulture sector.</p>
+                    <ul class="features">
+                        <li>Development of high-value crop clusters</li>
+                        <li>Infrastructure for post-harvest management</li>
+                        <li>Market linkage and export promotion</li>
+                        <li>Technology transfer and training programs</li>
+                        <li>Quality improvement initiatives</li>
+                    </ul>
+                </div>
+
+                <div class="upcoming-card">
+                    <h3>Production & Distribution of Quality Planting Materials</h3>
+                    <div class="allocation">Allocation: ₹12.75 Crore</div>
+                    <p><strong>Focus:</strong> Improve seed farms and nurseries to ensure timely provision of quality planting materials to farmers.</p>
+                    <ul class="features">
+                        <li>Modernization of seed farms</li>
+                        <li>Nursery development and upgradation</li>
+                        <li>Quality assurance systems</li>
+                        <li>Distribution network improvement</li>
+                        <li>Farmer training on seed selection</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Need Help with Scheme Applications?</h2>
+            <p>Our AI-powered Farm Assistant can help you understand and apply for these government schemes.</p>
+            <div class="cta-buttons">
+                <a href="index.html" class="cta-button">
+                    <i class="fas fa-comments"></i>
+                    Chat with Farm Assistant
+                </a>
+                <a href="index.html#contact" class="cta-button secondary">
+                    <i class="fas fa-phone"></i>
+                    Contact Support
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-seedling"></i>
+                    <span>Farm Assistant</span>
+                </div>
+                <p>&copy; 2024 Farm Assistant. Empowering farmers with AI technology and government scheme information.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Chat Button -->
+    <button class="chat-button" id="chatButton" onclick="toggleChat()">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <!-- Chat Window -->
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header">
+            <h3>Ask Our Farm Assistant</h3>
+            <button class="chat-close" onclick="closeChat()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot-message">
+                <div class="message-content">
+                    <p>Hello! I can help you with information about government agricultural schemes, farming advice, and more. What would you like to know?</p>
+                </div>
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="messageInput" placeholder="Ask about schemes, farming, or agriculture!" />
+            <button id="sendButton" onclick="sendMessage()">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+        <div class="chat-actions">
+            <button class="clear-chat" onclick="clearChat()">
+                <i class="fas fa-trash"></i>
+                Clear Chat
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

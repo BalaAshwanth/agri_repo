@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Farmigo</title>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        margin: 0;
+        padding: 20px;
+        background: linear-gradient(135deg, #2d5016 0%, #4a7c59 100%);
+        color: white;
+        min-height: 100vh;
+      }
+      .demo-container {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .demo-title {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+      }
+      .demo-subtitle {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+      }
+      .demo-button {
+        background: #ffd700;
+        color: #2c3e50;
+        border: none;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 8px;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+        margin: 0.5rem;
+        transition: all 0.3s ease;
+      }
+      .demo-button:hover {
+        background: #ffed4e;
+        transform: translateY(-2px);
+      }
+      .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin: 3rem 0;
+      }
+      .feature {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 2rem;
+        border-radius: 8px;
+        backdrop-filter: blur(10px);
+      }
+      .feature h3 {
+        margin-bottom: 1rem;
+        color: #ffd700;
+      }
+      .instructions {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 2rem;
+        border-radius: 8px;
+        margin: 2rem 0;
+        text-align: left;
+        backdrop-filter: blur(10px);
+      }
+      .instructions ol {
+        padding-left: 1.5rem;
+      }
+      .instructions li {
+        margin-bottom: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="demo-container">
+      <h1 class="demo-title">🌱 Farmigo</h1>
+      <p class="demo-subtitle">Your AI-Powered Agricultural Companion</p>
+
+      <a href="index.html" class="demo-button">🚀 Launch Application</a>
+      <a href="schemes.html" class="demo-button">🏛️ Government Schemes</a>
+
+      <div class="features">
+        <div class="feature">
+          <h3>🤖 AI Chatbot</h3>
+          <p>
+            Powered by Google Gemini API for intelligent agricultural advice
+          </p>
+        </div>
+        <div class="feature">
+          <h3>📱 Responsive Design</h3>
+          <p>Works perfectly on desktop, tablet, and mobile devices</p>
+        </div>
+        <div class="feature">
+          <h3>💾 Persistent Chat</h3>
+          <p>
+            Your conversations are saved locally and persist across sessions
+          </p>
+        </div>
+        <div class="feature">
+          <h3>🌾 Farmer-Focused</h3>
+          <p>
+            Specialized knowledge in crops, soil, weather, and farming practices
+          </p>
+        </div>
+        <div class="feature">
+          <h3>🏛️ Government Schemes</h3>
+          <p>
+            Comprehensive information about Central and State agricultural schemes
+          </p>
+        </div>
+      </div>
+
+      <div class="instructions">
+        <h3>Quick Start Guide:</h3>
+        <ol>
+          <li>Click "Launch Application" to open the Farm Assistant</li>
+          <li>Click the chat button (💬) in the bottom-right corner</li>
+          <li>
+            Start asking questions about farming, crops, soil, weather, and
+            more!
+          </li>
+        </ol>
+      </div>
+
+      <div class="instructions">
+        <h3>Sample Questions to Try:</h3>
+        <ul>
+          <li>"How do I improve soil health for corn?"</li>
+          <li>"What pests affect tomato plants and how do I control them?"</li>
+          <li>"When should I plant wheat in my region?"</li>
+          <li>"How do I read weather patterns for farming decisions?"</li>
+          <li>"What are the best irrigation methods for small farms?"</li>
+          <li>"How can I make my farming more sustainable?"</li>
+        </ul>
+      </div>
+
+      <p style="margin-top: 3rem; opacity: 0.8">
+        Built with ❤️ for farmers everywhere
+      </p>
+    </div>
+  </body>
+</html>
