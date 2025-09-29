@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - Terra Support - AI-Powered Agriculture Companion</title>
+    <meta
+      name="description"
+      content="Terra Support is an AI-powered agriculture companion providing farmers with instant and reliable answers to farming questions, crop management, and weather planning."
+    />
+    <meta
+      name="keywords"
+      content="Terra Support, AI agriculture, farming assistant, crop management, agricultural technology, smart farming"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>"
+    />
+    <style>
+      .about-hero {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--primary-light) 100%
+        );
+        color: var(--white);
+        padding: 120px 0 80px;
+        text-align: center;
+      }
+
+      .about-hero h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+
+      .about-hero p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .about-content {
+        padding: 80px 0;
+        background: var(--white);
+      }
+
+      .about-section {
+        margin-bottom: 4rem;
+      }
+
+      .about-section h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 2rem;
+        text-align: center;
+        position: relative;
+      }
+
+      .about-section h2::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: var(--accent-color);
+        border-radius: 2px;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .feature-card {
+        background: var(--white);
+        border: none;
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .feature-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--primary-light),
+          var(--accent-color)
+        );
+        border-radius: 16px 16px 0 0;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .feature-card h3 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid var(--background-light);
+      }
+
+      .feature-card .feature-icon {
+        width: 45px;
+        height: 45px;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--primary-light)
+        );
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        font-size: 1.3rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .feature-card p {
+        color: var(--text-dark);
+        line-height: 1.6;
+        font-size: 1rem;
+      }
+
+      .mission-section {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--primary-light) 100%
+        );
+        color: var(--white);
+        padding: 80px 0;
+      }
+
+      .mission-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      .mission-text h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .mission-text p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        opacity: 0.9;
+        margin-bottom: 1.5rem;
+      }
+
+      .mission-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+
+      .stat-item {
+        text-align: center;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: var(--border-radius);
+        backdrop-filter: blur(10px);
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-label {
+        font-size: 1rem;
+        opacity: 0.9;
+      }
+
+      .values-section {
+        background: var(--background-light);
+        padding: 80px 0;
+      }
+
+      .values-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .value-card {
+        background: var(--white);
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        box-shadow: var(--shadow);
+        border-left: 5px solid var(--accent-color);
+        transition: var(--transition);
+        text-align: center;
+      }
+
+      .value-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .value-card h3 {
+        color: var(--primary-color);
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+
+      .value-card p {
+        color: var(--text-dark);
+        line-height: 1.6;
+      }
+
+      .cta-section {
+        background: var(--accent-color);
+        color: var(--text-dark);
+        padding: 60px 0;
+        text-align: center;
+      }
+
+      .cta-section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .cta-section p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .cta-button {
+        background: var(--primary-color);
+        color: var(--white);
+        border: none;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        transition: var(--transition);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .cta-button:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .cta-button.secondary {
+        background: transparent;
+        color: var(--text-dark);
+        border: 2px solid var(--text-dark);
+      }
+
+      .cta-button.secondary:hover {
+        background: var(--text-dark);
+        color: var(--accent-color);
+      }
+
+      @media (max-width: 768px) {
+        .about-hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .about-section h2 {
+          font-size: 2rem;
+        }
+
+        .features-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .mission-content {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .mission-stats {
+          grid-template-columns: 1fr;
+        }
+
+        .values-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="nav-brand">
+          <i class="fas fa-seedling"></i>
+          <span>Terra Support</span>
+        </div>
+        <nav class="nav">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="about-us.html" class="nav-link active">About Us</a>
+          <a href="schemes.html" class="nav-link">Government Schemes</a>
+          <a href="terra-network.html" class="nav-link">Terra Network</a>
+          <a href="index.html#contact" class="nav-link">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- About Hero Section -->
+    <section class="about-hero">
+      <div class="container">
+        <h1>🌱 About Terra Support</h1>
+        <p>
+          Terra Support is an AI-powered agriculture companion that provides
+          farmers with instant and reliable answers to their farming questions.
+        </p>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="about-content">
+      <div class="container">
+        <div class="about-section">
+          <h2>🚀 Our Features</h2>
+          <p
+            style="
+              text-align: center;
+              color: var(--text-light);
+              margin-bottom: 3rem;
+              font-size: 1.1rem;
+            "
+          >
+            Empowering farmers with intelligent solutions for modern agriculture
+          </p>
+
+          <div class="features-grid">
+            <div class="feature-card">
+              <h3>
+                <div class="feature-icon">
+                  <i class="fas fa-brain"></i>
+                </div>
+                AI-Powered Guidance
+              </h3>
+              <p>
+                Get instant and reliable answers to your farming questions using
+                advanced artificial intelligence technology that understands
+                agricultural challenges and provides expert solutions.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <h3>
+                <div class="feature-icon">
+                  <i class="fas fa-seedling"></i>
+                </div>
+                Crop Management
+              </h3>
+              <p>
+                From choosing the right crops to managing pests and diseases,
+                our AI assistant provides comprehensive guidance for optimal
+                crop health and yield maximization.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <h3>
+                <div class="feature-icon">
+                  <i class="fas fa-cloud-sun"></i>
+                </div>
+                Weather Planning
+              </h3>
+              <p>
+                Plan your farming activities with confidence using weather-based
+                recommendations and seasonal insights to optimize your
+                agricultural operations.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <h3>
+                <div class="feature-icon">
+                  <i class="fas fa-globe"></i>
+                </div>
+                Regional Language Support
+              </h3>
+              <p>
+                Access farming guidance in your preferred regional language,
+                making our platform accessible and user-friendly for farmers
+                across different regions.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <h3>
+                <div class="feature-icon">
+                  <i class="fas fa-mobile-alt"></i>
+                </div>
+                Anytime, Anywhere Access
+              </h3>
+              <p>
+                Get clear guidance anytime, anywhere with our mobile-friendly
+                platform that works seamlessly across all devices, ensuring help
+                is always at your fingertips.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <h3>
+                <div class="feature-icon">
+                  <i class="fas fa-leaf"></i>
+                </div>
+                Farmer-Friendly Design
+              </h3>
+              <p>
+                Our platform is designed to be simple and intuitive, with a
+                farmer-friendly interface that makes accessing agricultural
+                knowledge easy and straightforward.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission-section">
+      <div class="container">
+        <div class="mission-content">
+          <div class="mission-text">
+            <h2>Our Mission</h2>
+            <p>
+              Our mission is to make farming smarter, reduce uncertainty, and
+              improve productivity for farmers worldwide.
+            </p>
+            <p>
+              We believe that every farmer deserves access to reliable
+              agricultural knowledge and guidance, regardless of their location
+              or technological expertise. By leveraging AI technology, we're
+              making expert farming advice accessible to everyone.
+            </p>
+          </div>
+          <div class="mission-stats">
+            <div class="stat-item">
+              <div class="stat-number">24/7</div>
+              <div class="stat-label">Available Support</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">AI</div>
+              <div class="stat-label">Powered Technology</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">Multi</div>
+              <div class="stat-label">Language Support</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">Smart</div>
+              <div class="stat-label">Farming Solutions</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+      <div class="container">
+        <div class="about-section">
+          <h2>💡 Our Values</h2>
+          <div class="values-grid">
+            <div class="value-card">
+              <h3><i class="fas fa-lightbulb"></i> Innovation</h3>
+              <p>
+                We continuously innovate to provide cutting-edge AI solutions
+                that address real farming challenges and improve agricultural
+                outcomes.
+              </p>
+            </div>
+            <div class="value-card">
+              <h3><i class="fas fa-users"></i> Accessibility</h3>
+              <p>
+                We ensure our platform is accessible to all farmers, regardless
+                of their technical background or language preferences.
+              </p>
+            </div>
+            <div class="value-card">
+              <h3><i class="fas fa-handshake"></i> Reliability</h3>
+              <p>
+                We provide accurate, trustworthy guidance that farmers can
+                depend on for making critical farming decisions.
+              </p>
+            </div>
+            <div class="value-card">
+              <h3><i class="fas fa-heart"></i> Empowerment</h3>
+              <p>
+                We empower farmers with knowledge and tools to make informed
+                decisions and improve their agricultural productivity.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+      <div class="container">
+        <h2>Ready to Transform Your Farming?</h2>
+        <p>
+          Join farmers worldwide who are already using Terra Support to make
+          smarter farming decisions and improve their productivity.
+        </p>
+        <div class="cta-buttons">
+          <a href="index.html" class="cta-button">
+            <i class="fas fa-comments"></i>
+            Chat with Terra Support
+          </a>
+          <a href="terra-network.html" class="cta-button secondary">
+            <i class="fas fa-chart-line"></i>
+            View Market Data
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <i class="fas fa-seedling"></i>
+            <span>Terra Support</span>
+          </div>
+          <p>
+            &copy; 2025 Terra Support. Empowering farmers with AI technology and
+            smart agricultural solutions.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Floating Chat Button -->
+    <button class="chat-button" id="chatButton" onclick="toggleChat()">
+      <i class="fas fa-comments"></i>
+    </button>
+
+    <!-- Chat Window -->
+    <div class="chat-window" id="chatWindow">
+      <div class="chat-header">
+        <h3>Ask Terra Support</h3>
+        <button class="chat-close" onclick="closeChat()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="message bot-message">
+          <div class="message-content">
+            <p>
+              Hello! I'm Terra Support, your AI-powered agriculture companion. I
+              can help you with crop management, pest control, weather planning,
+              and any farming questions you have. What would you like to know?
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="chat-input">
+        <input
+          type="text"
+          id="messageInput"
+          placeholder="Ask about crops, weather, pests, or farming!"
+        />
+        <button id="sendButton" onclick="sendMessage()">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+      <div class="chat-actions">
+        <button class="clear-chat" onclick="clearChat()">
+          <i class="fas fa-trash"></i>
+          Clear Chat
+        </button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

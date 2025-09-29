@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Terra Network - Agriculture Production & Market Support - Farm Assistant
+    </title>
+    <meta
+      name="description"
+      content="Comprehensive agriculture production data, market support information, and MSP details for Indian farmers."
+    />
+    <meta
+      name="keywords"
+      content="agriculture production, market support, MSP, foodgrains, commercial crops, India agriculture"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>"
+    />
+    <style>
+      .terra-hero {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--primary-light) 100%
+        );
+        color: var(--white);
+        padding: 120px 0 80px;
+        text-align: center;
+      }
+
+      .terra-hero h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+
+      .terra-hero p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .terra-content {
+        padding: 80px 0;
+        background: var(--white);
+      }
+
+      .terra-section {
+        margin-bottom: 4rem;
+      }
+
+      .terra-section h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 2rem;
+        text-align: center;
+        position: relative;
+      }
+
+      .terra-section h2::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: var(--accent-color);
+        border-radius: 2px;
+      }
+
+      .production-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .production-card {
+        background: var(--white);
+        border: none;
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .production-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--primary-light),
+          var(--accent-color)
+        );
+        border-radius: 16px 16px 0 0;
+      }
+
+      .production-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .production-card h3 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid var(--background-light);
+      }
+
+      .production-card .crop-icon {
+        width: 45px;
+        height: 45px;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--primary-light)
+        );
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        font-size: 1.3rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .production-data {
+        background: linear-gradient(135deg, #f8f9fa, #ffffff);
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin-bottom: 1rem;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      .production-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem 1rem;
+        margin: 0.5rem 0;
+        background: var(--white);
+        border-radius: 8px;
+        border-left: 4px solid var(--primary-color);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        transition: all 0.2s ease;
+      }
+
+      .production-row:hover {
+        transform: translateX(4px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .production-row .crop-name {
+        font-weight: 600;
+        color: var(--text-dark);
+        font-size: 0.95rem;
+      }
+
+      .production-row .production-value {
+        color: var(--primary-color);
+        font-weight: 700;
+        font-size: 0.9rem;
+        text-align: right;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--primary-light)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .msp-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .msp-card {
+        background: var(--white);
+        border: 2px solid var(--background-light);
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .msp-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--accent-color), #ffed4e);
+      }
+
+      .msp-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--accent-color);
+      }
+
+      .msp-card h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--text-dark);
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+
+      .msp-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .msp-row:last-child {
+        border-bottom: none;
+      }
+
+      .msp-row .crop-name {
+        font-weight: 600;
+        color: var(--text-dark);
+        flex: 1;
+      }
+
+      .msp-values {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+      }
+
+      .msp-cost {
+        color: var(--text-light);
+        font-size: 0.9rem;
+      }
+
+      .msp-price {
+        color: var(--primary-color);
+        font-weight: 600;
+      }
+
+      .msp-return {
+        background: var(--accent-color);
+        color: var(--text-dark);
+        padding: 0.25rem 0.5rem;
+        border-radius: 12px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      .market-intervention {
+        background: var(--background-light);
+        padding: 80px 0;
+      }
+
+      .intervention-table {
+        background: var(--white);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+
+      .intervention-table table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .intervention-table th {
+        background: var(--primary-color);
+        color: var(--white);
+        padding: 1rem;
+        text-align: left;
+        font-weight: 600;
+      }
+
+      .intervention-table td {
+        padding: 1rem;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .intervention-table tr:hover {
+        background: var(--background-light);
+      }
+
+      .intervention-table .crop-cell {
+        font-weight: 600;
+        color: var(--text-dark);
+      }
+
+      .intervention-table .price-cell {
+        color: var(--primary-color);
+        font-weight: 600;
+      }
+
+      .intervention-table .quantity-cell {
+        color: var(--text-light);
+      }
+
+      .insights-section {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--primary-light) 100%
+        );
+        color: var(--white);
+        padding: 80px 0;
+      }
+
+      .insights-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .insight-card {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .insight-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .insight-card p {
+        opacity: 0.9;
+        line-height: 1.6;
+      }
+
+      .cta-section {
+        background: var(--accent-color);
+        color: var(--text-dark);
+        padding: 60px 0;
+        text-align: center;
+      }
+
+      .cta-section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .cta-section p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .cta-button {
+        background: var(--primary-color);
+        color: var(--white);
+        border: none;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        transition: var(--transition);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .cta-button:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .cta-button.secondary {
+        background: transparent;
+        color: var(--text-dark);
+        border: 2px solid var(--text-dark);
+      }
+
+      .cta-button.secondary:hover {
+        background: var(--text-dark);
+        color: var(--accent-color);
+      }
+
+      @media (max-width: 768px) {
+        .terra-hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .terra-section h2 {
+          font-size: 2rem;
+        }
+
+        .production-grid,
+        .msp-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .msp-values {
+          flex-direction: column;
+          gap: 0.5rem;
+          align-items: flex-end;
+        }
+
+        .intervention-table {
+          overflow-x: auto;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="nav-brand">
+          <i class="fas fa-seedling"></i>
+          <span>Terra Support</span>
+        </div>
+        <nav class="nav">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="about-us.html" class="nav-link">About Us</a>
+          <a href="schemes.html" class="nav-link">Government Schemes</a>
+          <a href="terra-network.html" class="nav-link active">Terra Network</a>
+          <a href="index.html#contact" class="nav-link">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Terra Network Hero Section -->
+    <section class="terra-hero">
+      <div class="container">
+        <h1>🌾 Terra Network</h1>
+        <p>
+          Agriculture Production & Market Support Data (2019-2025) -
+          Comprehensive insights into India's agricultural production, market
+          interventions, and minimum support prices.
+        </p>
+      </div>
+    </section>
+
+    <!-- Production Data Section -->
+    <section class="terra-content">
+      <div class="container">
+        <div class="terra-section">
+          <h2>📊 Production of Foodgrains & Commercial Crops</h2>
+          <p
+            style="
+              text-align: center;
+              color: var(--text-light);
+              margin-bottom: 3rem;
+              font-size: 1.1rem;
+            "
+          >
+            Production in Lakh Tonnes (2019-20 to 2023-24)
+          </p>
+
+          <div class="production-grid">
+            <div class="production-card">
+              <h3>
+                <div class="crop-icon">
+                  <i class="fas fa-seedling"></i>
+                </div>
+                Foodgrain Crops
+              </h3>
+              <div class="production-data">
+                <div class="production-row">
+                  <span class="crop-name">Rice</span>
+                  <span class="production-value">1188.70 → 1378.25</span>
+                </div>
+                <div class="production-row">
+                  <span class="crop-name">Wheat</span>
+                  <span class="production-value">1078.61 → 1132.92</span>
+                </div>
+                <div class="production-row">
+                  <span class="crop-name">Coarse Cereals</span>
+                  <span class="production-value">304.88 → 393.64</span>
+                </div>
+                <div class="production-row">
+                  <span class="crop-name">Nutri Cereals</span>
+                  <span class="production-value">172.61 → 175.72</span>
+                </div>
+                <div class="production-row">
+                  <span class="crop-name">Total Pulses</span>
+                  <span class="production-value">230.25 → 242.42</span>
+                </div>
+                <div class="production-row">
+                  <span class="crop-name"
+                    ><strong>Total Food Grains</strong></span
+                  >
+                  <span class="production-value"
+                    ><strong>2975.04 → 3322.95</strong></span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="production-card">
+              <h3>
+                <div class="crop-icon">
+                  <i class="fas fa-industry"></i>
+                </div>
+                Commercial Crops
+              </h3>
+              <div class="production-data">
+                <div class="production-row">
+                  <span class="crop-name">Sugarcane</span>
+                  <span class="production-value">3705.00 → 4531.58</span>
+                </div>
+                <div class="production-row">
+                  <span class="crop-name">Cotton (Bales)</span>
+                  <span class="production-value">360.65 → 325.22</span>
+                </div>
+                <div class="production-row">
+                  <span class="crop-name">Jute & Mesta (Bales)</span>
+                  <span class="production-value">98.77 → 96.92</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="production-card">
+              <h3>
+                <div class="crop-icon">
+                  <i class="fas fa-chart-line"></i>
+                </div>
+                Key Performance Metrics
+              </h3>
+              <div class="production-data">
+                <div class="production-row">
+                  <span class="crop-name">Foodgrain Growth</span>
+                  <span class="production-value">+11.7%</span>
+                </div>
+                <div class="production-row">
+                  <span class="crop-name">Sugarcane Growth</span>
+                  <span class="production-value">+22.3%</span>
+                </div>
+                <div class="production-row">
+                  <span class="crop-name">Coarse Cereals Growth</span>
+                  <span class="production-value">+29.1%</span>
+                </div>
+                <div class="production-row">
+                  <span class="crop-name">Rice Growth</span>
+                  <span class="production-value">+15.9%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MSP Section -->
+    <section class="terra-content" style="background: var(--background-light)">
+      <div class="container">
+        <div class="terra-section">
+          <h2>💰 Minimum Support Prices (MSP) & Returns</h2>
+
+          <div class="msp-grid">
+            <div class="msp-card">
+              <h3>🌾 Kharif Crops (KMS 2024-25)</h3>
+              <div class="msp-row">
+                <span class="crop-name">Paddy (Common)</span>
+                <div class="msp-values">
+                  <span class="msp-cost">₹1533</span>
+                  <span class="msp-price">₹2300</span>
+                  <span class="msp-return">50%</span>
+                </div>
+              </div>
+              <div class="msp-row">
+                <span class="crop-name">Jowar (Hybrid)</span>
+                <div class="msp-values">
+                  <span class="msp-cost">₹2247</span>
+                  <span class="msp-price">₹3371</span>
+                  <span class="msp-return">50%</span>
+                </div>
+              </div>
+              <div class="msp-row">
+                <span class="crop-name">Bajra</span>
+                <div class="msp-values">
+                  <span class="msp-cost">₹1485</span>
+                  <span class="msp-price">₹2625</span>
+                  <span class="msp-return">77%</span>
+                </div>
+              </div>
+              <div class="msp-row">
+                <span class="crop-name">Maize</span>
+                <div class="msp-values">
+                  <span class="msp-cost">₹1413</span>
+                  <span class="msp-price">₹2225</span>
+                  <span class="msp-return">57%</span>
+                </div>
+              </div>
+              <div class="msp-row">
+                <span class="crop-name">Arhar (Tur)</span>
+                <div class="msp-values">
+                  <span class="msp-cost">₹4761</span>
+                  <span class="msp-price">₹7550</span>
+                  <span class="msp-return">59%</span>
+                </div>
+              </div>
+              <div class="msp-row">
+                <span class="crop-name">Cotton (Medium)</span>
+                <div class="msp-values">
+                  <span class="msp-cost">₹4747</span>
+                  <span class="msp-price">₹7121</span>
+                  <span class="msp-return">50%</span>
+                </div>
+              </div>
+              <div class="msp-row">
+                <span class="crop-name">Groundnut</span>
+                <div class="msp-values">
+                  <span class="msp-cost">₹4522</span>
+                  <span class="msp-price">₹6783</span>
+                  <span class="msp-return">50%</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="msp-card">
+              <h3>🌾 Rabi Crops (RMS 2025-26)</h3>
+              <div class="msp-row">
+                <span class="crop-name">Wheat</span>
+                <div class="msp-values">
+                  <span class="msp-cost">₹1182</span>
+                  <span class="msp-price">₹2425</span>
+                  <span class="msp-return">105%</span>
+                </div>
+              </div>
+              <div class="msp-row">
+                <span class="crop-name">Barley</span>
+                <div class="msp-values">
+                  <span class="msp-cost">₹1239</span>
+                  <span class="msp-price">₹1980</span>
+                  <span class="msp-return">60%</span>
+                </div>
+              </div>
+              <div class="msp-row">
+                <span class="crop-name">Gram</span>
+                <div class="msp-values">
+                  <span class="msp-cost">₹3527</span>
+                  <span class="msp-price">₹5640</span>
+                  <span class="msp-return">60%</span>
+                </div>
+              </div>
+              <div class="msp-row">
+                <span class="crop-name">Masur (Lentil)</span>
+                <div class="msp-values">
+                  <span class="msp-cost">₹3607</span>
+                  <span class="msp-price">₹6350</span>
+                  <span class="msp-return">76%</span>
+                </div>
+              </div>
+              <div class="msp-row">
+                <span class="crop-name">Rapeseed/Mustard</span>
+                <div class="msp-values">
+                  <span class="msp-cost">₹2860</span>
+                  <span class="msp-price">₹5850</span>
+                  <span class="msp-return">104%</span>
+                </div>
+              </div>
+              <div class="msp-row">
+                <span class="crop-name">Safflower</span>
+                <div class="msp-values">
+                  <span class="msp-cost">₹3960</span>
+                  <span class="msp-price">₹5940</span>
+                  <span class="msp-return">50%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Market Intervention Scheme -->
+    <section class="market-intervention">
+      <div class="container">
+        <div class="terra-section">
+          <h2>📑 Market Intervention Scheme (MIS) Sanctions</h2>
+          <p
+            style="
+              text-align: center;
+              color: var(--text-light);
+              margin-bottom: 3rem;
+              font-size: 1.1rem;
+            "
+          >
+            As on 31.12.2024
+          </p>
+
+          <div class="intervention-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Year</th>
+                  <th>Crop & State</th>
+                  <th>MIP (₹/MT)</th>
+                  <th>Quantity (MT)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>2021-22</td>
+                  <td class="crop-cell">Potato (Nagaland)</td>
+                  <td class="price-cell">₹8,620</td>
+                  <td class="quantity-cell">14,200</td>
+                </tr>
+                <tr>
+                  <td rowspan="5">2022-23</td>
+                  <td class="crop-cell">Onion (Rajasthan)</td>
+                  <td class="price-cell">₹7,780</td>
+                  <td class="quantity-cell">2,56,400</td>
+                </tr>
+                <tr>
+                  <td class="crop-cell">Garlic (Rajasthan)</td>
+                  <td class="price-cell">₹29,570</td>
+                  <td class="quantity-cell">1,07,836</td>
+                </tr>
+                <tr>
+                  <td class="crop-cell">C-grade Apple (Himachal Pradesh)</td>
+                  <td class="price-cell">₹12,960</td>
+                  <td class="quantity-cell">1,44,936</td>
+                </tr>
+                <tr>
+                  <td class="crop-cell">Mango (Himachal Pradesh)</td>
+                  <td class="price-cell">₹11,700</td>
+                  <td class="quantity-cell">1,250</td>
+                </tr>
+                <tr>
+                  <td class="crop-cell">Potato (Uttar Pradesh)</td>
+                  <td class="price-cell">₹6,500</td>
+                  <td class="quantity-cell">10,00,000</td>
+                </tr>
+                <tr>
+                  <td>2023-24</td>
+                  <td class="crop-cell">C-grade Apple (Himachal Pradesh)</td>
+                  <td class="price-cell">₹12,960</td>
+                  <td class="quantity-cell">1,16,060</td>
+                </tr>
+                <tr>
+                  <td>2024-25</td>
+                  <td class="crop-cell">Grapes (Mizoram)</td>
+                  <td class="price-cell">₹50,000</td>
+                  <td class="quantity-cell">3,460</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Insights -->
+    <section class="insights-section">
+      <div class="container">
+        <div class="terra-section">
+          <h2>✅ Key Insights</h2>
+          <div class="insights-grid">
+            <div class="insight-card">
+              <h3><i class="fas fa-chart-line"></i> Production Growth</h3>
+              <p>
+                Foodgrain production continues to grow despite fluctuating
+                yields in some crops, showing resilience in India's agricultural
+                sector.
+              </p>
+            </div>
+            <div class="insight-card">
+              <h3>
+                <i class="fas fa-exclamation-triangle"></i> Pulses Concern
+              </h3>
+              <p>
+                Pulses production shows a concerning decline due to shrinking
+                cultivated area, requiring immediate attention and policy
+                intervention.
+              </p>
+            </div>
+            <div class="insight-card">
+              <h3><i class="fas fa-industry"></i> Commercial Crops</h3>
+              <p>
+                Sugarcane and cotton maintain strong production levels, though
+                sugarcane yield has fallen, indicating need for yield
+                improvement strategies.
+              </p>
+            </div>
+            <div class="insight-card">
+              <h3><i class="fas fa-seedling"></i> Staple Performance</h3>
+              <p>
+                Oilseeds remain stable, while rice and wheat continue to perform
+                as staple crops with consistent gains in production.
+              </p>
+            </div>
+            <div class="insight-card">
+              <h3><i class="fas fa-rupee-sign"></i> MSP Returns</h3>
+              <p>
+                Most crops offer 50%+ returns over cost, with wheat and rapeseed
+                showing exceptional returns of 100%+, ensuring farmer
+                profitability.
+              </p>
+            </div>
+            <div class="insight-card">
+              <h3><i class="fas fa-handshake"></i> Market Support</h3>
+              <p>
+                Active market intervention schemes provide price support during
+                market distress, protecting farmer interests across various
+                crops and regions.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+      <div class="container">
+        <h2>Need Agricultural Data Analysis?</h2>
+        <p>
+          Our AI-powered Farm Assistant can help you analyze market trends,
+          production data, and make informed farming decisions.
+        </p>
+        <div class="cta-buttons">
+          <a href="index.html" class="cta-button">
+            <i class="fas fa-comments"></i>
+            Chat with Farm Assistant
+          </a>
+          <a href="schemes.html" class="cta-button secondary">
+            <i class="fas fa-file-alt"></i>
+            View Government Schemes
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <i class="fas fa-seedling"></i>
+            <span>Terra Support</span>
+          </div>
+          <p>
+            &copy; 2025 Farm Assistant. Empowering farmers with AI technology
+            and comprehensive agricultural data.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Floating Chat Button -->
+    <button class="chat-button" id="chatButton" onclick="toggleChat()">
+      <i class="fas fa-comments"></i>
+    </button>
+
+    <!-- Chat Window -->
+    <div class="chat-window" id="chatWindow">
+      <div class="chat-header">
+        <h3>Ask Our Farm Assistant</h3>
+        <button class="chat-close" onclick="closeChat()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="message bot-message">
+          <div class="message-content">
+            <p>
+              Hello! I can help you with agricultural production data, market
+              prices, MSP information, and farming advice. What would you like
+              to know?
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="chat-input">
+        <input
+          type="text"
+          id="messageInput"
+          placeholder="Ask about production data, MSP, or farming!"
+        />
+        <button id="sendButton" onclick="sendMessage()">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+      <div class="chat-actions">
+        <button class="clear-chat" onclick="clearChat()">
+          <i class="fas fa-trash"></i>
+          Clear Chat
+        </button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

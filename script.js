@@ -79,7 +79,7 @@ class FarmAssistant {
     if (!message) return;
 
     // Add user message to chat
-    this.addMessage(message, "user");
+    this.addMessage(message);
     messageInput.value = "";
 
     // Show loading indicator
@@ -115,10 +115,11 @@ class FarmAssistant {
         - Sustainable farming practices
         
         Provide helpful, accurate, and practical advice. Be conversational but professional. 
-        If you don't know something specific, say so and suggest where they might find more information.`;
+        If you don't know something specific, say so and suggest where they might find more information.
+        Give the answers in brief no need detailed explanation",, if its need that okay, just need only 3 -4 lines max`;
 
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${this.apiKey}`,
+      `https://generativelanguage.googleapis.com/v1/models/gemini-2.0-flash:generateContent?key=${this.apiKey}`,
       {
         method: "POST",
         headers: {
